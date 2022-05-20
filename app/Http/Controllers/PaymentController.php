@@ -38,8 +38,7 @@ class PaymentController extends Controller
     public function handle_payment(Request $request)
     {
         $status = $request->status;
-        dd($status);
-        // return view('handle.payment', ['status' => $status]);
+        return view('payment', ['status' => $status]);
     }
 
     /**
