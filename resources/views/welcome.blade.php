@@ -36,12 +36,14 @@
     <body>
       <div id="map"></div>
       <script>
-        var map;
+        //map zoom level for 2km diameter
+        const zoomLevel = Math.log2(38000 * Math.cos(6.550260 * Math.PI / 180)/2)+3
         function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 6.397, lng: 6.644},
-            zoom: 13
+            center: {lat: 6.550260, lng: 3.390040},
+            zoom: zoomLevel
           });
+          
         }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHd-I7RZjpQLKRP5M-hGO2Xu7RUdoQVL8&callback=initMap"
