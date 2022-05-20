@@ -21,7 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/payment', [PaymentController::class, 'store'])->name('payment.create');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -41,3 +40,7 @@ Route::view('/agent', 'home')->middleware('auth:agent');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index')->middleware('auth:,admin,agent');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create')->middleware('auth:admin,agent');
 Route::post('/products/create', [ProductController::class, 'store'])->name('products.store')->middleware('auth:admin,agent');
+
+Route::get('/payment', [PaymentController::class, 'store'])->name('payment.create')->middleware('auth:,admin,agent');
+
+Route::get('/handle_payment', [PaymentController::class, 'handle_payment'])->name('payment.store')->middleware('auth:,admin,agent');

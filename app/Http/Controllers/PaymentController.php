@@ -35,23 +35,11 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function handle_payment(Request $request)
     {
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer'.' '.env('FLW_PUBLIC_KEY')
-        ])->post('https://api.flutterwave.com/v3/payments', [
-            'tx_ref' => 'hooli-tx-1920bbtytty',
-            'amount' => '100',
-            'currency' => 'NGN',
-            'redirect_url'=> 'https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc',
-            'customer'=> [
-                'email'=> "user@gmail.com",
-                'phonenumber'=> "08094994528",
-                'name'=> "Yemi Desola"
-            ]
-        ]);
-
-        dd($response);
+        $status = $request->status;
+        dd($status);
+        // return view('handle.payment', ['status' => $status]);
     }
 
     /**
