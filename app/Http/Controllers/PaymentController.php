@@ -38,7 +38,7 @@ class PaymentController extends Controller
     public function store()
     {
         $response = Http::withHeaders([
-            'Authorization' => env('FLW_SECRET_KEY')
+            'Authorization' => 'Bearer'.' '.env('FLW_PUBLIC_KEY')
         ])->post('https://api.flutterwave.com/v3/payments', [
             'tx_ref' => 'hooli-tx-1920bbtytty',
             'amount' => '100',

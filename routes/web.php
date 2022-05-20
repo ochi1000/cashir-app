@@ -20,8 +20,8 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/payment', [PaymentController::class, 'store'])->name('payment.create');
 Auth::routes();
+Route::get('/payment', [PaymentController::class, 'store'])->name('payment.create');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
